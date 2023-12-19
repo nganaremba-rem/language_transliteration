@@ -40,7 +40,7 @@ function Homepage() {
   )
 
   return (
-    <div className='flex flex-col gap-5 justify-center items-center p-10'>
+    <div className='flex flex-col gap-5 justify-center items-center p-5 md:p-4'>
       <h1 className='text-3xl text-white font-extrabold p-2'>
         Language Transliteration
       </h1>
@@ -51,7 +51,7 @@ function Homepage() {
       )}
       <div className='flex flex-col md:flex-row gap-5 items-center'>
         <form action=''>
-          <div className='flex flex-col gap-4 bg-gradient-to-tl from-sky-600 to-slate-300 shadow-lg py-5 px-10 rounded-3xl'>
+          <div className='flex flex-col gap-4 bg-gradient-to-tl from-sky-600 to-slate-300 shadow-lg px-5 py-2 md:py-5 md:px-10 rounded-3xl'>
             <div className='p-2 flex flex-col gap-2'>
               <label className='font-extrabold' htmlFor='languageFrom '>
                 From
@@ -94,7 +94,7 @@ function Homepage() {
           </div>
         </form>
         <form>
-          <div className='flex flex-col gap-4 bg-gradient-to-tr from-rose-400 to-slate-300 shadow-lg py-5 px-10 rounded-3xl'>
+          <div className='flex flex-col gap-4 bg-gradient-to-tr from-rose-400 to-slate-300 shadow-lg px-5 py-2 md:py-5 md:px-10 rounded-3xl'>
             <div className='p-2 flex flex-col gap-2'>
               <label className='font-extrabold' htmlFor='languageTo'>
                 To
