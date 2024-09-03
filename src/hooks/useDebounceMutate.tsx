@@ -1,50 +1,52 @@
-import { UseMutateFunction } from '@tanstack/react-query'
-import { AxiosResponse } from 'axios'
-import { useCallback, useRef } from 'react'
-import { paramType } from '../api/apiCall'
+import type { UseMutateFunction } from "@tanstack/react-query";
+import type { AxiosResponse } from "axios";
+import { useCallback, useRef } from "react";
+import type { paramType } from "../api/apiCall";
 
 export type ResponseType = {
-  taskType: string
+  taskType: string;
   output: [
     {
-      source: string
-      target: string[]
+      source: string;
+      target: string[];
     }
-  ]
-  config: null
-}
+  ];
+  config: null;
+};
 
 export type HeadersType = {
-  'Access-Control-Allow-Origin'?: string
-  'Content-Length'?: string
-  'Content-Type'?: string
-  Date?: string
-  Server?: string
-  Vary?: string
-}
+  "Access-Control-Allow-Origin"?: string;
+  "Content-Length"?: string;
+  "Content-Type"?: string;
+  Date?: string;
+  Server?: string;
+  Vary?: string;
+};
 
 type cbType = UseMutateFunction<
   AxiosResponse<ResponseType, HeadersType>,
   Error,
   paramType,
   unknown
->
+>;
 
-function useDebounceMutate(cb: cbType, delay = 1000) {
-  const timerId = useRef<NodeJS.Timeout | null>(null)
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
+function useDebounceMutate(cb: any, delay = 1000) {
+  const timerId = useRef<NodeJS.Timeout | null>(null);
 
   const debounceMutateFn = useCallback(
-    (params: paramType) => {
-      if (timerId.current) clearTimeout(timerId.current)
+    // biome-ignore lint/suspicious/noExplicitAny: <explanation>
+    (params: any) => {
+      if (timerId.current) clearTimeout(timerId.current);
 
       timerId.current = setTimeout(() => {
-        cb(params)
-      }, delay)
+        cb(params);
+      }, delay);
     },
     [cb, delay]
-  )
+  );
 
-  return debounceMutateFn
+  return debounceMutateFn;
 }
 
-export default useDebounceMutate
+export default useDebounceMutate;
