@@ -7,7 +7,7 @@ import { languageSupported } from "../utils/languageSupported";
 function Homepage() {
   const [fromText, setFromText] = useState("");
   const [toText, setToText] = useState("");
-  const [fromLanguage, setFromLanguage] = useState("en");
+  // const [fromLanguage, setFromLanguage] = useState("en");
   const [toLanguage, setToLanguage] = useState("mni");
   const [warning, setWarning] = useState("");
   // const { mutate } = useFetchTransliteratedTextAndSet(setToText);
@@ -42,10 +42,10 @@ function Homepage() {
     (e: React.ChangeEvent<HTMLTextAreaElement>) => {
       setFromText(e.target.value);
 
-      if (fromLanguage === toLanguage) {
-        setWarning("Both Language cannot be same");
-        return;
-      }
+      // if (fromLanguage === toLanguage) {
+      //   setWarning("Both Language cannot be same");
+      //   return;
+      // }
 
       setWarning("");
 
@@ -69,7 +69,7 @@ function Homepage() {
         setToText(resultText.join(" ").replace(/[\,]/g, " "));
       });
     },
-    [toLanguage, fromLanguage, queryClient]
+    [toLanguage, queryClient]
   );
 
   return (
@@ -139,7 +139,7 @@ function Homepage() {
                 id="languageTo"
                 value={toLanguage}
                 onChange={(e) => {
-                  if (e.target.value !== fromLanguage) setWarning("");
+                  // if (e.target.value !== fromLanguage) setWarning("");
                   if (fromText) {
                     if (fromText.trim() === "") {
                       setToText("");

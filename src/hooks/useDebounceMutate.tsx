@@ -1,7 +1,4 @@
-import type { UseMutateFunction } from "@tanstack/react-query";
-import type { AxiosResponse } from "axios";
 import { useCallback, useRef } from "react";
-import type { paramType } from "../api/apiCall";
 
 export type ResponseType = {
   taskType: string;
@@ -23,12 +20,12 @@ export type HeadersType = {
   Vary?: string;
 };
 
-type cbType = UseMutateFunction<
-  AxiosResponse<ResponseType, HeadersType>,
-  Error,
-  paramType,
-  unknown
->;
+// type cbType = UseMutateFunction<
+//   AxiosResponse<ResponseType, HeadersType>,
+//   Error,
+//   paramType,
+//   unknown
+// >;
 
 // biome-ignore lint/suspicious/noExplicitAny: <explanation>
 function useDebounceMutate(cb: any, delay = 1000) {
